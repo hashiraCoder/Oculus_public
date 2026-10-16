@@ -1,0 +1,33 @@
+{
+  "name": "oculus-platform-public",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Enterprise GitHub Security & Risk Management Platform (Public Architecture Showcase)",
+  "workspaces": [
+    "backend",
+    "frontend",
+    "cli"
+  ],
+  "scripts": {
+    "dev:backend": "npm --workspace=backend run dev",
+    "dev:frontend": "npm --workspace=frontend run dev",
+    "test": "npm --workspace=backend run test && npm --workspace=cli run test",
+    "test:backend": "npm --workspace=backend run test",
+    "test:cli": "npm --workspace=cli run test",
+    "test:smoke": "npm --workspace=backend run test:smoke",
+    "benchmark": "node benchmarks/run-benchmarks.js",
+    "build": "npm --workspace=frontend run build"
+  },
+  "keywords": [
+    "security",
+    "sast",
+    "sca",
+    "secrets-detection",
+    "devsecops",
+    "github-security",
+    "bullmq",
+    "sandbox"
+  ],
+  "author": "Oculus Security",
+  "license": "Apache-2.0"
+}
