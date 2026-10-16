@@ -1,0 +1,40 @@
+{
+  "name": "oculus-backend",
+  "version": "1.0.0",
+  "description": "Enterprise GitHub Security & Risk Management Platform - Backend API & Scanner Pipeline",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "dotenv -e .env -- nodemon server.js",
+    "start": "node server.js",
+    "db:migrate": "node database/migrate.js",
+    "test": "vitest run tests/scanner tests/orchestrator",
+    "test:watch": "vitest tests/scanner tests/orchestrator",
+    "test:smoke": "node scripts/verify-scanner.js"
+  },
+  "dependencies": {
+    "@socket.io/redis-adapter": "^8.3.0",
+    "acorn": "^8.18.0",
+    "acorn-walk": "^8.3.5",
+    "axios": "^1.19.0",
+    "bullmq": "^5.81.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "csv-stringify": "^6.8.2",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "ioredis": "^5.11.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
+    "socket.io": "^4.8.3",
+    "tar": "^7.5.22",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^11.0.0",
+    "nodemon": "^3.1.14",
+    "vitest": "^4.1.11"
+  }
+}

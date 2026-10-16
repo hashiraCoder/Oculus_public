@@ -41,3 +41,7 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+backend/tests
+backend/admin
+backend/.env.example
