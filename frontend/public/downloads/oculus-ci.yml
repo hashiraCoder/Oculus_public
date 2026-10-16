@@ -1,0 +1,53 @@
+name: Oculus Security Gate
+
+# Trigger security scans on every push and PR targeting main/master branches.
+# Fails the pipeline if the security gate fails.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  oculus-security-scan:
+    name: Oculus Security Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Oculus CLI
+        run: npm install -g @oculus/cli
+
+      # -----------------------------------------------------------------------
+      # Pipeline configuration:
+      # Secrets:
+      #   OCULUS_TOKEN         - Developer token generated in Oculus Settings
+      # Variables:
+      #   OCULUS_API_URL       - e.g. https://oculus.yourcompany.com/api/v1
+      #   OCULUS_WORKSPACE_ID  - Workspace UUID
+      #   OCULUS_REPO_ID       - Registered Repository ID in Oculus
+      # -----------------------------------------------------------------------
+      - name: Run Oculus Security Scan & Gate Evaluation
+        env:
+          OCULUS_TOKEN: ${{ secrets.OCULUS_TOKEN }}
+          OCULUS_API_URL: ${{ vars.OCULUS_API_URL }}
+          OCULUS_WORKSPACE_ID: ${{ vars.OCULUS_WORKSPACE_ID }}
+        run: |
+          oculus scan \
+            --repository ${{ vars.OCULUS_REPO_ID }} \
+            --branch ${{ github.ref_name }} \
+            --commit ${{ github.sha }} \
+            --wait \
+            --timeout 600 \
+            --json
+        # Exit code contract:
+        #   0   - Scan passed security gate
+        #   1   - Scan failed security gate, timed out, or error
+        #   130 - User cancelled (not applicable in CI)

@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  /* =========================================
+     OCULUS DESIGN SYSTEM — CORE TOKENS
+     ========================================= */
+  /* Base Backgrounds (Obsidian / Dark Graphite) */
+  --color-bg-root: #08090C;
+  --color-bg-base: #0D0F14;
+  --color-bg-surface: #13161F;
+  --color-bg-surface-hover: #1C202E;
+  --color-bg-surface-alt: #181B26;
+  --color-bg-surface-active: #222738;
+
+  /* Text Colors */
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-text-muted: #475569;
+
+  /* Borders & Dividers */
+  --color-border-subtle: #1A1E2B;
+  --color-border-base: #242A3D;
+  --color-border-normal: #242A3D;
+  --color-border-hover: #353D57;
+  --color-border-strong: #353D57;
+  --color-border-focus: #10B981;
+
+  /* Primary Brand (Oculus Emerald) */
+  --color-primary-base: #10B981;
+  --color-primary-hover: #059669;
+  --color-primary-active: #047857;
+  --color-primary-alpha: rgba(16, 185, 129, 0.12);
+  --color-primary-alpha-strong: rgba(16, 185, 129, 0.22);
+
+  /* Global Risk & Severity Score Colors */
+  --color-risk-critical: #F43F5E;
+  --color-risk-high: #F97316;
+  --color-risk-medium: #F59E0B;
+  --color-risk-low: #10B981;
+  --color-risk-info: #06B6D4;
+
+  /* Alpha versions for badges/backgrounds */
+  --color-risk-critical-alpha: rgba(244, 63, 94, 0.12);
+  --color-risk-critical-border: rgba(244, 63, 94, 0.3);
+  --color-risk-high-alpha: rgba(249, 115, 22, 0.12);
+  --color-risk-high-border: rgba(249, 115, 22, 0.3);
+  --color-risk-medium-alpha: rgba(245, 158, 11, 0.12);
+  --color-risk-medium-border: rgba(245, 158, 11, 0.3);
+  --color-risk-low-alpha: rgba(16, 185, 129, 0.12);
+  --color-risk-low-border: rgba(16, 185, 129, 0.3);
+  --color-risk-info-alpha: rgba(6, 182, 212, 0.12);
+  --color-risk-info-border: rgba(6, 182, 212, 0.3);
+
+  /* Grades (A-F) */
+  --color-grade-a: #10B981;
+  --color-grade-b: #34D399;
+  --color-grade-c: #F59E0B;
+  --color-grade-d: #F97316;
+  --color-grade-f: #F43F5E;
+
+  /* =========================================
+     TYPOGRAPHY TOKENS
+     ========================================= */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* =========================================
+     ELEVATION & SHADOW TOKENS
+     ========================================= */
+  --shadow-surface: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-drawer: -10px 0 30px -5px rgba(0, 0, 0, 0.7);
+  --shadow-popover: 0 12px 32px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px #242A3D;
+
+  /* =========================================
+     RADIUS TOKENS
+     ========================================= */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* =========================================
+     ANIMATION TOKENS
+     ========================================= */
+  --animate-fade-in: fadeIn 0.15s ease-out;
+  --animate-slide-up: slideUp 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-drawer-in: drawerIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes drawerIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+
+  /* =========================================
+     Z-INDEX TOKENS
+     ========================================= */
+  --z-header: 40;
+  --z-dropdown: 50;
+  --z-overlay: 60;
+  --z-drawer: 70;
+  --z-modal: 80;
+  --z-toast: 100;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-root text-text-primary font-sans antialiased text-[13px] leading-normal;
+    /* Selection color */
+    ::selection {
+      @apply bg-primary-base/20 text-primary-base;
+    }
+  }
+
+  /* Focus outline standard */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-base ring-offset-1 ring-offset-bg-base;
+  }
+}
+
+/* Custom Scrollbar for Dark Theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-base);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
