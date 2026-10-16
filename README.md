@@ -258,121 +258,8 @@ sequenceDiagram
 
 ---
 
-## 🚀 Quick Start & Local Setup
 
-### Prerequisites
-Make sure your environment has the following tools installed:
-- **Node.js** `≥ 18.0.0`
-- **npm** `≥ 9.0.0`
-- **PostgreSQL** (Local instance or [Supabase](https://supabase.com))
-- **Redis** (Local instance or [Upstash](https://upstash.com))
-- A registered **GitHub App** with Repository & Webhook permissions
-
----
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/hashiraCoder/Oculus.git
-cd Oculus
-```
-
----
-
-### 2. Backend Setup
-
-```bash
-cd Backend
-npm install
-cp .env.development .env.development.local
-```
-
-Configure your environment variables in `Backend/.env.development.local`:
-
-```env
-# ── Server Configuration ──
-PORT=3000
-NODE_ENV=development
-CORS_URL=http://localhost:5173
-
-# ── PostgreSQL Database ──
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=your_password
-DB_NAME=oculus
-DB_MAX_POOL_SIZE=20
-
-# ── Redis Cache & Queue ──
-REDIS_URL=redis://127.0.0.1:6379
-
-# ── JWT Authentication ──
-JWT_SECRET=super_secret_access_key_min_32_characters
-JWT_REFRESH_SECRET=super_secret_refresh_key_min_32_characters
-JWT_ACCESS_EXPIRES_IN=15m
-JWT_REFRESH_EXPIRES_IN=7d
-
-# ── GitHub App Integration ──
-GITHUB_APP_ID=123456
-GITHUB_APP_NAME=oculus-security-scanner
-GITHUB_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA...\n-----END RSA PRIVATE KEY-----"
-GITHUB_WEBHOOK_SECRET=your_webhook_hmac_secret
-
-# ── Email Service (brevo / smtp / resend) ──
-EMAIL_PROVIDER=smtp
-FRONTEND_URL=http://localhost:5173
-
-# ── Scanner Engine Controls ──
-SCANNER_TIMEOUT_MS=30000
-SCANNER_MAX_FILE_SIZE=512000
-SCANNER_CONCURRENCY=2
-FINDING_ENCRYPTION_KEY=32_byte_aes_encryption_key_here!
-```
-
-Initialize database tables and run migrations:
-
-```bash
-# Bootstrap baseline schema
-npm run db:bootstrap
-
-# Execute migration scripts
-npm run db:migrate
-
-# Start backend in development mode
-npm run dev
-```
-
-The API service will initialize at `http://localhost:3000/api/v1`.
-
----
-
-### 3. Frontend Setup
-
-In a separate terminal window:
-
-```bash
-cd ../Frontend
-npm install
-```
-
-Create a `.env.local` file:
-
-```env
-VITE_API_URL=http://localhost:3000/api/v1
-VITE_GITHUB_APP_NAME=oculus-security-scanner
-```
-
-Start the Vite development server:
-
-```bash
-npm run dev
-```
-
-The frontend dashboard will be available at `http://localhost:5173`.
-
----
-
-### 4. CLI Setup (Optional)
+### CLI Setup 
 
 To test the command-line interface locally:
 
@@ -558,8 +445,7 @@ Oculus/
 │   │   ├── commands/           # auth, scan, findings, repo, config commands
 │   │   └── utils/              # Terminal formatters, HTTP client, exit codes
 │   └── ci/                     # Reusable CI workflow templates
-│
-└── .ai/                        # Architecture decision records and specifications
+└── 
 ```
 
 </details>
