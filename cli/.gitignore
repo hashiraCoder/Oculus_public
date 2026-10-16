@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+package-lock.json
+cli/node_modules/
+cli/tests/
+
+# Build artifacts
+*.tgz
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Config/Runtime
+.oculus/
+config.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Testing
+.nyc_output/
+coverage/
+
+# Misc
+.cache/
+temp/
+tmp/

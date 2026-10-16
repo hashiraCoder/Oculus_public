@@ -1,0 +1,54 @@
+name: Oculus Security Gate
+
+# Blocks merges when the security gate fails.
+# Runs on every push to main/master and every pull request targeting those branches.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  oculus-security-scan:
+    name: Oculus Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Oculus CLI dependencies
+        working-directory: cli
+        run: npm ci
+
+      # -----------------------------------------------------------------------
+      # Required secrets (set in repo Settings → Secrets and variables → Actions):
+      #   OCULUS_TOKEN         — Developer token (ocx_live_...)
+      #
+      # Required variables (Settings → Secrets and variables → Variables):
+      #   OCULUS_API_URL       — e.g. https://oculus.yourcompany.com/api/v1
+      #   OCULUS_WORKSPACE_ID  — Workspace ID from Oculus UI
+      #   OCULUS_REPO_ID       — Repository ID registered in Oculus
+      # -----------------------------------------------------------------------
+      - name: Run Oculus Security Scan
+        env:
+          OCULUS_TOKEN:        ${{ secrets.OCULUS_TOKEN }}
+          OCULUS_API_URL:      ${{ vars.OCULUS_API_URL }}
+          OCULUS_WORKSPACE_ID: ${{ vars.OCULUS_WORKSPACE_ID }}
+        run: |
+          node cli/bin/oculus.js scan \
+            --repository ${{ vars.OCULUS_REPO_ID }} \
+            --branch     ${{ github.ref_name }} \
+            --commit     ${{ github.sha }} \
+            --wait \
+            --timeout    600 \
+            --json
+        # Exit code contract:
+        #   0   — Scan completed and security gate PASSED
+        #   1   — Scan failed, gate failed, or error
+        #   130 — Interrupted by SIGINT (should not occur in CI)

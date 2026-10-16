@@ -1,0 +1,42 @@
+{
+  "name": "@oculus/cli",
+  "version": "1.0.0",
+  "description": "Command line interface for Oculus security scanning & verification",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "oculus": "./bin/oculus.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    ".env.example"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "vitest run tests/"
+  },
+  "keywords": [
+    "security",
+    "sast",
+    "oculus",
+    "cli",
+    "devsecops",
+    "sca",
+    "vulnerability"
+  ],
+  "author": "Oculus Security",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^1.7.4",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.11"
+  }
+}
