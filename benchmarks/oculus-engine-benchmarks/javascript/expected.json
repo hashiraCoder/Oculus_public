@@ -1,0 +1,29 @@
+{
+  "testCases": [
+    {
+      "file": "sql-injection.js",
+      "expected": [
+        {
+          "rule": "JS-SQL-001",
+          "severity": "CRITICAL",
+          "lineNumber": 6
+        },
+        {
+          "rule": "JS-SQL-001",
+          "severity": "CRITICAL",
+          "lineNumber": 11
+        }
+      ]
+    },
+    {
+      "file": "unsafe-eval.js",
+      "expected": [
+        {
+          "rule": "JS-EVAL-001",
+          "severity": "HIGH",
+          "lineNumber": 4
+        }
+      ]
+    }
+  ]
+}

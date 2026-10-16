@@ -1,0 +1,19 @@
+{
+  "testCases": [
+    {
+      "file": "package.json",
+      "expected": [
+        {
+          "rule": "DEP-LODASH-001",
+          "severity": "HIGH",
+          "lineNumber": 3
+        },
+        {
+          "rule": "DEP-AXIOS-001",
+          "severity": "CRITICAL",
+          "lineNumber": 4
+        }
+      ]
+    }
+  ]
+}
