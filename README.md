@@ -204,7 +204,7 @@ Oculus follows a clean, layered architecture separating user interface, orchestr
 Oculus is designed according to enterprise defense-in-depth principles:
 
 ```mermaid
-sequenceDiagram
+sequence Diagram
     autonumber
     actor Client as User / Browser
     participant Auth as Auth Gateway
