@@ -286,7 +286,7 @@ Ensure you have the following installed locally:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/hashiraCoder/Oculus.git
+git clone https://github.com/hashiraCoder/Oculus.git  -->(restricted please contact owner)
 cd Oculus
 ```
 
