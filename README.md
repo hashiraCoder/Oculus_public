@@ -21,7 +21,7 @@ Oculus connects seamlessly to your GitHub organization to discover codebases, ru
 
 <br />
 
-[🌐 Live Demo](https://oculus-psi.vercel.app) • [📖 Documentation](#Evidence) • [⚡ Quick Start](#-quick-start--local-setup) • [🐛 Report Issue](https://github.com/hashiraCoder/Oculus/issues) • [💡 Request Feature](https://github.com/hashiraCoder/Oculus/issues)
+[🌐 Live Demo](https://oculus-psi.vercel.app) • [📖 Documentation](https://github.com/hashiraCoder/Oculus_public/tree/main/Evidence) • [⚡ Quick Start](#-quick-start--local-setup) • [🐛 Report Issue](https://github.com/hashiraCoder/Oculus/issues) • [💡 Request Feature](https://github.com/hashiraCoder/Oculus/issues)
 
 </div>
 
