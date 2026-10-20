@@ -311,9 +311,9 @@ CORS_URL=http://localhost:5173
 # ── PostgreSQL Database ──
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_USER=postgres
+DB_USER=db_user_name
 DB_PASSWORD=your_secure_password
-DB_NAME=oculus
+DB_NAME=db_name
 DB_MAX_POOL_SIZE=20
 
 # ── Redis Cache & BullMQ Queue ──
@@ -330,11 +330,6 @@ FINDING_ENCRYPTION_KEY=replace_with_32_byte_aes_encryption_key
 SCANNER_TIMEOUT_MS=30000
 SCANNER_CONCURRENCY=2
 
-# ── (Optional) GitHub App Integration ──
-GITHUB_APP_ID=
-GITHUB_APP_NAME=
-GITHUB_PRIVATE_KEY=
-GITHUB_WEBHOOK_SECRET=
 ```
 
 Initialize the database schema and launch the development server:
